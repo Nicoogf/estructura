@@ -36,8 +36,7 @@ const userSchema = new mongoose.Schema(
     pass: {
       type: String,
       required: true,
-      minlength: 8,
-      maxlength: 20
+      minlength: 8,     
     },
     dineroActual: {
       type: Number,
@@ -81,7 +80,8 @@ const userSchema = new mongoose.Schema(
     ],
     rol: {
       type: String,
-      enum: ['administrador', 'usuario', 'empresa'],      
+      enum: ['administrador', 'usuario', 'empresa'],
+      default:"usuario"    
     }
   },
   {

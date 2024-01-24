@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+.gradiente-lime {
+    background: rgb(120,173,9);
+    background: linear-gradient(180deg, rgba(120,173,9,1) 0%, rgba(148,199,59,1) 35%, rgba(150,209,27,1) 100%);
+}

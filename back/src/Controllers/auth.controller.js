@@ -28,11 +28,13 @@ export const register = async ( req,res ) => {
        //const userSaved 
        const UsuarioGuardado =  await usuarioNuevo.save() ;
 
-       jwt.sign({
-        id: UsuarioGuardado._id
-       })
+      
        
-        res.json
+       res.cookie( 'token' , token )
+       res.json({ 
+           message : "Usuario creado Satisfactoriamente"
+        })
+      /*  res.json
             ({
                 id: UsuarioGuardado._id,
                 nombre : UsuarioGuardado.nombre,
@@ -47,7 +49,7 @@ export const register = async ( req,res ) => {
                 createAt: UsuarioGuardado.createdAt ,
                 updateAt: UsuarioGuardado.updatedAt
             })
-
+      */
     } catch (error) {
         console.log(error)
     }

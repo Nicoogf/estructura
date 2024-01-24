@@ -1,82 +1,92 @@
-import mongoose from "mongoose" ;
+import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema(
+  {
     nombre: {
-        type : String,
-        require: true,
-        trim: true
+      type: String,
+      required: true,
+      trim: true
     },
-    apellido : {
-        type : String,
-        require: true,
-        trim: true
+    apellido: {
+      type: String,
+      required: true,
+      trim: true
     },
-    dni : {
-        type : Number,
-        require: true,
-        trim: true,
-        unique: true
+    dni: {
+      type: Number,
+      required: true,
+      trim: true,
+      unique: true
+    },
+    telefono: {
+      type: Number,
+      required: true,
+      trim: true,
+      unique: true,
+      minlength: 10,
+      maxlength: 16
     },
     correo: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: true,
-        lowercase: true
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+      lowercase: true
     },
     pass: {
-        type: String,
-        required: true,
-        minlength: 8,
-        maxlength: 20 
+      type: String,
+      required: true,
+      minlength: 8,
+      maxlength: 20
     },
-    dineroActual : {
-        type: Number,  
-        default: 0
+    dineroActual: {
+      type: Number,
+      default: 0
     },
     cuentasBancarias: {
-        type: Object, 
-        default: {},    
-        properties: {
-            nombreBanco: {
-                type: String,
-                required: true
-            },
-            dineroEnCuenta: {
-                type: Number,
-                required: true,
-                default: 0
-            },
-           
+      type: Object,
+      default: {},
+      properties: {
+        nombreBanco: {
+          type: String,
+          required: true
+        },
+        dineroEnCuenta: {
+          type: Number,          
+          default: 0
         }
-    },
-    rol: {
-        type: String,
-        enum: ['administrador', 'usuario' , 'empesa'],
-        required: true
+      }
     },
     movimientosBancarios: [
-        {
-            fecha: {
-                type: Date,
-                default: Date.now
-            },
-            tipoTransaccion: {
-                type: String,
-                enum: ['ingreso', 'egreso'],
-                required: true
-            },
-            monto: {
-                type: Number,
-                required: true,              
-            },
-            desc:{
-                type: String,
-                require: true,
-                trim: true
-            }
+      {
+        fecha: {
+          type: Date,
+          default: Date.now
+        },
+        tipoTransaccion: {
+          type: String,
+          enum: ['ingreso', 'egreso'],
+          required: true
+        },
+        monto: {
+          type: Number,
+          required: true
+        },
+        desc: {
+          type: String,          
+          trim: true,          
+          default: "Sin Informacion"
         }
-    ]
-})
+      }
+    ],
+    rol: {
+      type: String,
+      enum: ['administrador', 'usuario', 'empresa'],      
+    }
+  },
+  {
+    timestamps: true
+  }
+);
 
-export default mongoose.model('User' , userSchema )
+export default mongoose.model('User', userSchema);

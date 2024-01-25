@@ -1,6 +1,6 @@
 import User from "../Models/user.mode.js" ;
 import bycrpt from "bcryptjs" ;
-import jwt from "jsonwebtoken" ;
+import { createAccesToken } from "../Libs/jwt.js";
 
 export const register = async ( req,res ) => {
     const { 
@@ -26,30 +26,25 @@ export const register = async ( req,res ) => {
             telefono
         })
        //const userSaved 
-       const UsuarioGuardado =  await usuarioNuevo.save() ;
-
-      
+       const usuarioGuardado =  await usuarioNuevo.save() ;
+       const token = await createAccesToken ({ id: usuarioGuardado._id})      
        
-       res.cookie( 'token' , token )
-       res.json({ 
-           message : "Usuario creado Satisfactoriamente"
-        })
-      /*  res.json
+       res.cookie( 'token' , token )     
+       res.json
             ({
-                id: UsuarioGuardado._id,
-                nombre : UsuarioGuardado.nombre,
-                apellido: UsuarioGuardado.apellido,
-                dni: UsuarioGuardado.dni,
-                correo: UsuarioGuardado.correo,
-                telefono: UsuarioGuardado.telefono,
-                dineroActual: UsuarioGuardado.dineroActual,
-                cuentasBancarias: UsuarioGuardado.cuentasBancarias,
-                movimientosBancarios: UsuarioGuardado.movimientosBancarios,
-                rol: UsuarioGuardado.rol ,
-                createAt: UsuarioGuardado.createdAt ,
-                updateAt: UsuarioGuardado.updatedAt
-            })
-      */
+                id: usuarioGuardado._id,
+                nombre : usuarioGuardado.nombre,
+                apellido: usuarioGuardado.apellido,
+                dni: usuarioGuardado.dni,
+                correo: usuarioGuardado.correo,
+                telefono: usuarioGuardado.telefono,
+                dineroActual: usuarioGuardado.dineroActual,
+                cuentasBancarias: usuarioGuardado.cuentasBancarias,
+                movimientosBancarios: usuarioGuardado.movimientosBancarios,
+                rol: usuarioGuardado.rol ,
+                createAt: usuarioGuardado.createdAt ,
+                updateAt: usuarioGuardado.updatedAt
+            })      
     } catch (error) {
         console.log(error)
     }

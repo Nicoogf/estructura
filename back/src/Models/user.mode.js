@@ -53,6 +53,24 @@ const userSchema = new mongoose.Schema(
         dineroEnCuenta: {
           type: Number,          
           default: 0
+        },
+        tarjetas:{
+          type: Object,
+          default: {},
+          properties: {
+            tipo: {
+              type: String,            
+              enum: ['debito', 'credito'],
+            },
+            dineroDisponible:{
+              type: Number,            
+              default: 0,
+            },
+            cupo:{
+              type: Number,            
+              default: 0,
+            }
+          }
         }
       }
     },

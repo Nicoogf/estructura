@@ -9,12 +9,12 @@ const Cuentas = await Cuenta.find()
 
 //const createTask
 export const agregarCuenta = async ( req, res) => {
-  const { nombreBanco , dineroDisponible , tarjetas} = req.body
+  const { nombreBanco , dineroDisponible , } = req.body
   //const newTask
   const nuevaCuenta = new Cuenta({
     nombreBanco,
     dineroDisponible,
-    tarjetas
+    user  : req.user.id 
   })
   //const saveTask
   const cuentaGuardada = await nuevaCuenta.save()

@@ -7,13 +7,14 @@ const cuentaBancaria = new mongoose.Schema({
         required: true,
         trim: true
       },
-      tarjetas: {
-        type: Object,
-        default: "{}",
-      },     
       dineroDisponible:{
         type: Number,
         default:0
+      },
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        require : true
       }
 })
    

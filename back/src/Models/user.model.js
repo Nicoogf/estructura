@@ -14,9 +14,8 @@ const userSchema = new mongoose.Schema(
     },
     dni: {
       type: Number,
-      required: true,
       trim: true,
-      unique: true
+
     },
     telefono: {
       type: Number,

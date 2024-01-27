@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
       minlength: 10,
       maxlength: 16
     },
-    correo: {
+    pass: {
       type: String,
       required: true,
       trim: true,
@@ -41,38 +41,6 @@ const userSchema = new mongoose.Schema(
     dineroActual: {
       type: Number,
       default: 0
-    },
-    cuentasBancarias: {
-      type: Object,
-      default: {},
-      properties: {
-        nombreBanco: {
-          type: String,
-          required: true
-        },
-        dineroEnCuenta: {
-          type: Number,          
-          default: 0
-        },
-        tarjetas:{
-          type: Object,
-          default: {},
-          properties: {
-            tipo: {
-              type: String,            
-              enum: ['debito', 'credito'],
-            },
-            dineroDisponible:{
-              type: Number,            
-              default: 0,
-            },
-            cupo:{
-              type: Number,            
-              default: 0,
-            }
-          }
-        }
-      }
     },
     movimientosBancarios: [
       {

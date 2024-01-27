@@ -1,4 +1,4 @@
-import User from "../Models/user.mode.js" ;
+import User from "../Models/user.model.js" ;
 import bycrpt from "bcryptjs" ;
 import { createAccesToken } from "../Libs/jwt.js";
 

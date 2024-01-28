@@ -20,6 +20,8 @@ router.delete("/resume/:id" , authRequire, deleteCuenta )
 //editar datos de  Cuenta
 router.delete("/resume/:id" , authRequire, updateCuenta )
 
+//editar datos de  Cuenta
+router.delete("/resume/:id//" , authRequire )
 
 
 export default router ;

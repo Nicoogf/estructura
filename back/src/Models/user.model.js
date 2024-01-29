@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
       minlength: 10,
       maxlength: 16
     },
-    pass: {
+    correo: {
       type: String,
       required: true,
       trim: true,
@@ -41,28 +41,10 @@ const userSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    movimientosBancarios: [
-      {
-        fecha: {
-          type: Date,
-          default: Date.now
-        },
-        tipoTransaccion: {
-          type: String,
-          enum: ['ingreso', 'egreso'],
-          required: true
-        },
-        monto: {
-          type: Number,
-          required: true
-        },
-        desc: {
-          type: String,          
-          trim: true,          
-          default: "Sin Informacion"
-        }
-      }
-    ],
+    movimientosBancarios: {
+      type:String
+    }
+    ,
     rol: {
       type: String,
       enum: ['administrador', 'usuario', 'empresa'],

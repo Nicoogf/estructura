@@ -3,8 +3,7 @@ import mongoose from "mongoose";
 //const taskSchema
 const cuentaBancaria = new mongoose.Schema({
     nombreBanco: {
-        type: String,
-        required: true,
+        type: String,    
         trim: true
       },
       dineroDisponible:{

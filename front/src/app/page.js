@@ -1,13 +1,11 @@
-import NavComponent from "./Components/nav.jsx";
-import NavMobile from "./Components/navMobile.jsx";
-
 export default function Home() {
   return (
-    <main className="bg-blue-dark">         
-       <NavComponent /> 
-        <div className="h-screen bg-red-300 gradient-bg">
+    <main className={""}>       
+        <div className="h-screen gradient-bg">
 
           <div className="gradient-bg">
+
+          <nav className=""> Hola mundo </nav>
 
             <div className="gradients-container">
 
@@ -22,7 +20,8 @@ export default function Home() {
           </div>
 a
         </div>
-       <NavMobile />  
+        
+  
     </main>
   );
 }
